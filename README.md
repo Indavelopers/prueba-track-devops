@@ -16,8 +16,9 @@ Instrucciones generales:
 1. Lee con detenimiento las instrucciones.
 2. Trabaja en el directorio `ejercicio`.
 3. Prepara tu entorno de trabajo:
-   1. Comprueba que Cloud SDK está instalado y disponible, e inicia sesión con tu cuenta de usuario de Google si es necesario.
-   2. Comprueba que `docker`, `kubectl`, `terraform`, están instalados y disponibles.
+   1. Clona el repositorio: `git clone https://github.com/Indavelopers/prueba-track-devops.git`
+   2. Comprueba que Cloud SDK está instalado y disponible, e inicia sesión con tu cuenta de usuario de Google si es necesario.
+   3. Comprueba que `docker`, `kubectl`, `terraform`, están instalados y disponibles.
 4. Conteneriza la aplicación web `webapp`:
    1. Si necesitas testear localmente la aplicación web, puedes hacerlo: en `webapp`, `source venv/bin/activate`, `flask --debug --app main run`, `deactivate`
    2. Crea una imagen de contenedor usando el Dockerfile proporcionado, preparada para subirla al repositorio de Docker de Artifact Registry proporcionado, con nombre `webapp` y etiqueta `v1`.
