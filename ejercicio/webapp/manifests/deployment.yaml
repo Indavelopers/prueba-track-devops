@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-deployment
-  namespace: webapp
 spec:
   replicas: 3
   selector:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: europe-southwest1-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:v1
+          image: CONTAINER_IMAGE_URL
           ports:
             - containerPort: 8080
           env:

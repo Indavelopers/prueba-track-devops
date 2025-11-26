@@ -31,19 +31,18 @@ Instrucciones generales:
    3. Despliega el clúster de GKE y el bucket de Cloud Storage con Terraform.
 6. Despliega la aplicación web contenerizada en el clúster de GKE:
    1. Descarga las credenciales de conexión al cúster para tu configuración de `kubectl`.
-   2. Crea un namespace llamado `webapp` para desplegar la aplicación.
-   3. Usando los manifiestos de Kubernetes en `webapp/manifests`, crea los siguientes objetos en el namespace `webapp`:
+   2. Crea un namespace llamado `webapp` para desplegar la aplicación de forma declarativa (crea un manifiesto YAML/JSON).
+   3. Usando los manifiestos de Kubernetes en `webapp/manifests`, completa su información y crea los siguientes objetos en el namespace `webapp`:
       1. Deployment
       2. Service
       3. ConfigMap
-      4. Sustituye `YOUR_PROJECT_ID` por tu ID de proyecto de Google Cloud en los manifiestos donde se incluya.
    4. Despliega los objetos en el clúster de GKE y comprueba que se han creado correctamente.
    5. Sube un archivo de ejemplo al bucket de Cloud Storage para que lo liste la aplicación web.
       1. Por ejemplo, algún archivo de este repositorio.
    6. Testea la aplicación web a través de su Service externo.
 7. Analizando los logs de Cloud Logging, encuentra el objeto de Cloud Storage listado y logueado por la aplicación web.
 8. Crea una política de alerta en Cloud Monitoring con la siguiente configuración:
-   1. Objetivo: alertar si un Pod queda en estado de "pending" durante más de 5 minutos.
+   1. Objetivo: alertar si un Pod queda en estado de "pending" durante más de 2 minutos.
    2. Métrica: `prometheus.googleapis.com/kube_pod_status_phase/gauge`
    3. Duración: 2 minutos.
    4. Canal de notificación: tu email.
