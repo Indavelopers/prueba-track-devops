@@ -49,10 +49,11 @@ Instrucciones generales:
 9. Ejecuta una pipeline de CI/CD en Cloud Build con la configuración de `webapp/cloudbuid.yaml`:
    1. Modifica el código de la aplicación para que devuelva `"app_version": "v2"` en lugar de `"app_version": "v1"`.
    2. Asegúrate de que Cloud Build tiene permiso para desplegar en GKE.
-   3. En `cloudbuild.yaml`, sustituye `YOUR_PROJECT_ID` por tu ID de proyecto de Google Cloud.
+   3. En `cloudbuild.yaml`, sustituye las variables indicadas
    4. Lanza manualmente la pipeline para que despliegue la nueva versión de la aplicación con etiqueta `v2`.
       1. _Nota del instructor_: Los pasos de despliegue seguidos no son los habituales ni siguen las buenas prácticas recomendadas, pero son utilizados aquí para simplificar el ejercicio, p. ej. al no disponer de un repositorio externo para los commits del alumno.
    5. Testea la aplicación web de nuevo a través de su Service externo.
+10. Elimina los recursos creados, utilizando comandos de Terraform.
 
 ## Dispones de
 
@@ -90,3 +91,12 @@ Recursos:
 - monitoring.googleapis.com
 - logging.googleapis.com
 - iamcredentials.googleapis.com
+
+## Roles necesarios
+
+- Alumno: `owner`
+- Cuenta de servicio por defecto de Compute Engine (habilitada si no lo está): `editor`, o en su defecto,
+  - `Storage Admin`
+  - `Kubernetes Engine Admin`
+  - `Logs writer`
+  - `Artifact Registry Repository Administrator`

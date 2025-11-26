@@ -11,6 +11,6 @@ provider "google" {
   project = var.project_id
 }
 
-# resource "google_storage_bucket" "webapp_bucket" {}
+# resource "google_storage_bucket" "webapp_bucket" { COMPLETAR }
 
-# resource "google_container_cluster" "primary" {}
+# resource "google_container_cluster" "primary" { COMPLETAR }

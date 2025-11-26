@@ -4,7 +4,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'europe-west4-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:v2'
+      - 'CONTAINER_IMAGE_URL:$BUILD_ID'
       - '.' # Point to the webapp directory as the build context
     id: 'Build'
 
@@ -12,7 +12,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'europe-west4-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:v2'
+      - 'CONTAINER_IMAGE_URL:$BUILD_ID'
     id: 'Push'
 
   # 3. Deploy to GKE
@@ -22,9 +22,9 @@ steps:
       - 'container'
       - 'clusters'
       - 'get-credentials'
-      - 'webapp-cluster'
+      - 'CLUSTER_NAME'
       - '--location'
-      - 'europe-west4'
+      - 'CLUSTER_LOCATION'
       - '--project'
       - 'YOUR_PROJECT_ID'
     id: 'Get GKE Credentials'
@@ -35,13 +35,10 @@ steps:
       - 'set'
       - 'image'
       - 'deployment/webapp-deployment'
-      - 'webapp=europe-west4-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:v2'
+      - 'webapp=CONTAINER_IMAGE_URL:$BUILD_ID'
       - '--namespace'
       - 'webapp'
     env:
-      - 'CLOUDSDK_COMPUTE_REGION=europe-west4'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=webapp-cluster'
+      - 'CLOUDSDK_COMPUTE_REGION=CLUSTER_LOCATION'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=CLUSTER_NAME'
     id: 'Deploy to GKE'
-
-images:
-  - 'europe-west4-docker.pkg.dev/YOUR_PROJECT_ID/webapp-repo/webapp:v2'

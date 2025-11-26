@@ -4,10 +4,13 @@ variable "project_id" {
 }
 
 variable "bucket_name" {
+  # Completar
 }
 
 variable "cluster_name" {
+  # Completar
 }
 
 variable "location" {
+  # Completar
 }
